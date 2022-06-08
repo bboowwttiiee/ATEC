@@ -8,46 +8,54 @@
 import SwiftUI
 
 struct PersonRowView: View {
-    //MARK: - PROPERTIES
+    // MARK: - PROPERTIES
     var photo: UIImage
     var name: String
     var age: String
     
-    //MARK: - BODY
+    // MARK: - BODY
     var body: some View {
         HStack(spacing: 12) {
             Image(uiImage: photo)
-                .renderingMode(.original)
                 .resizable()
                 .scaledToFill()
-                .frame(width: 54, height: 54)
+                .frame(width: 50, height: 50)
                 .clipShape(Circle())
                 .clipped()
+                .shadow(color: .black.opacity(0.08), radius: 5, x: 5, y: 5)
             
             VStack(alignment: .leading, spacing: 5) {
                 Text(name)
                     .font(.title2)
-                    .fontWeight(.bold)
-                Text(age)
+                    .fontWeight(.semibold)
+                    .lineLimit(1)
+                
+                Text("\(age) years old")
                     .font(.body)
                     .foregroundColor(Color.secondary)
             } //: VSTACK
+            .frame(maxWidth: .infinity, alignment: .leading)
             
-            Spacer()
-            Text("10")
-                .fontWeight(.semibold)
-                .background(Circle()
-                    .fill(.yellow)
-                    .frame(width: 30, height: 30))
+            Circle()
+                .fill(.yellow)
+                .frame(width: 30, height: 30)
+                .overlay {
+                    Text("10")
+                        .fontWeight(.semibold)
+                }
+                .frame(maxWidth: .infinity, alignment: .trailing)
         } //: HSTACK
-        .padding(.trailing, 8)
-        .padding(.vertical, 8)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .fill(Color(UIColor.secondarySystemBackground))
+        )
     }
 }
 
-//MARK: - PREVIEW
+// MARK: - PREVIEW
 struct PersonRowView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonRowView(photo: UIImage(named: "avatarTemp1")!, name: "Jack", age: "13")
+        PersonRowView(photo: UIImage(named: "lightAvatarTemp1")!, name: "Jack", age: "13")
     }
 }

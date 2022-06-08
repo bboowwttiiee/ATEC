@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct NotificationQuestionPageView: View {
-    @AppStorage("isHeight") var isJack: Bool = false
-    @AppStorage("isDiameter") var isKate: Bool = false
-    @AppStorage("isMass") var isJohn: Bool = false
-    @AppStorage("isPayload") var isKianu: Bool = false
+    @AppStorage("isJack") var isJack: Bool = false
+    @AppStorage("isKate") var isKate: Bool = false
+    @AppStorage("isJohn") var isJohn: Bool = false
+    @AppStorage("isKianu") var isKianu: Bool = false
     
     var body: some View {
         NavigationView {
@@ -23,29 +23,25 @@ struct NotificationQuestionPageView: View {
                 Divider().padding(.vertical, 4)
                 
                 ScrollView(.vertical, showsIndicators: false) {
-                    //MARK: - 1ST TOGGLE
-                    HStack {
-                        Text("Jack")
-                        
-                        Toggle(isOn: $isJack) {
-                            if isJack {
-                                Text("Yes".uppercased())
-                                    .fontWeight(.bold)
-                                    .foregroundColor(Color.green)
-                            } else {
-                                Text("No".uppercased())
-                                    .fontWeight(.bold)
-                                    .foregroundColor(Color.secondary)
-                            }
+                    // MARK: - 1ST TOGGLE
+                    Toggle(isOn: $isJack) {
+                        if isJack {
+                            Text("Yes".uppercased())
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.green)
+                        } else {
+                            Text("No".uppercased())
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.secondary)
                         }
-                        .padding()
-                        .background(
-                            Color(UIColor.tertiarySystemBackground)
-                                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                    )
                     }
+                    .padding()
+                    .background(
+                        Color(UIColor.tertiarySystemBackground)
+                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                    )
                     
-                    //MARK: - 2ND TOGGLE
+                    // MARK: - 2ND TOGGLE
                     Toggle(isOn: $isKate) {
                         if isKate {
                             Text("Yes".uppercased())
@@ -60,10 +56,10 @@ struct NotificationQuestionPageView: View {
                     .padding()
                     .background(
                         Color(UIColor.tertiarySystemBackground)
-                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                     )
                     
-                    //MARK: - 3RD TOGGLE
+                    // MARK: - 3RD TOGGLE
                     Toggle(isOn: $isJohn) {
                         if isJohn {
                             Text("Yes".uppercased())
@@ -78,13 +74,11 @@ struct NotificationQuestionPageView: View {
                     .padding()
                     .background(
                         Color(UIColor.tertiarySystemBackground)
-                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                     )
                     
-                    //MARK: - 4TH TOGGLE
+                    // MARK: - 4TH TOGGLE
                     Toggle(isOn: $isKianu) {
-                        Text("Kianu")
-                            .fontWeight(.bold)
                         if isKianu {
                             Text("Yes".uppercased())
                                 .fontWeight(.bold)
@@ -98,17 +92,18 @@ struct NotificationQuestionPageView: View {
                     .padding()
                     .background(
                         Color(UIColor.tertiarySystemBackground)
-                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                     )
                 }
             } //: BOX
             .padding()
             .navigationTitle("Daily Question")
             .navigationBarTitleDisplayMode(.inline)
-        }
+        } //: NAVIGATION
     }
 }
 
+// MARK: - PREVIEW
 struct NotificationQuestionPageView_Previews: PreviewProvider {
     static var previews: some View {
         NotificationQuestionPageView()

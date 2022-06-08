@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9924AEDC2845885B00B8D9FD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9924AEDB2845885B00B8D9FD /* SettingsView.swift */; };
+		9924AEDE28458AA500B8D9FD /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9924AEDD28458AA500B8D9FD /* CustomTabBarView.swift */; };
 		9975CD4E2833D2F200A9B25A /* ATECApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9975CD4D2833D2F200A9B25A /* ATECApp.swift */; };
 		9975CD502833D2F200A9B25A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9975CD4F2833D2F200A9B25A /* ContentView.swift */; };
 		9975CD522833D2F300A9B25A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9975CD512833D2F300A9B25A /* Assets.xcassets */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9924AEDB2845885B00B8D9FD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9924AEDD28458AA500B8D9FD /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		9975CD4A2833D2F200A9B25A /* ATEC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATEC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9975CD4D2833D2F200A9B25A /* ATECApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATECApp.swift; sourceTree = "<group>"; };
 		9975CD4F2833D2F200A9B25A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 				9975CD4D2833D2F200A9B25A /* ATECApp.swift */,
 				9975CD5D2833D35A00A9B25A /* OnboardingView.swift */,
 				9975CD4F2833D2F200A9B25A /* ContentView.swift */,
+				9924AEDB2845885B00B8D9FD /* SettingsView.swift */,
 				9975CD5B2833D31C00A9B25A /* Views */,
 				9975CD5C2833D33400A9B25A /* Models */,
 				998EEC1628367995006598B2 /* Managers */,
@@ -109,6 +114,7 @@
 				9975CD672833EE9A00A9B25A /* PersonPageView.swift */,
 				998EEC1B2836D2CC006598B2 /* NotificationQuestionPageView.swift */,
 				99C7E3DD283EF2A100E2D19F /* OnboardingContentView.swift */,
+				9924AEDD28458AA500B8D9FD /* CustomTabBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,11 +226,13 @@
 				998EEC1A28367BB2006598B2 /* Components.swift in Sources */,
 				998EEC1528367933006598B2 /* PersonModel.xcdatamodeld in Sources */,
 				9975CD5E2833D35A00A9B25A /* OnboardingView.swift in Sources */,
+				9924AEDE28458AA500B8D9FD /* CustomTabBarView.swift in Sources */,
 				998EEC12283677F4006598B2 /* PeopleListView.swift in Sources */,
 				9975CD622833D3B600A9B25A /* QuestionsModel.swift in Sources */,
 				9975CD682833EE9A00A9B25A /* PersonPageView.swift in Sources */,
 				9975CD602833D38D00A9B25A /* AddPersonPageView.swift in Sources */,
 				9975CD6A2834073500A9B25A /* NotificationsManager.swift in Sources */,
+				9924AEDC2845885B00B8D9FD /* SettingsView.swift in Sources */,
 				9975CD6E2834151900A9B25A /* ImagePicker.swift in Sources */,
 				9975CD502833D2F200A9B25A /* ContentView.swift in Sources */,
 				9975CD662833EE3900A9B25A /* PersonRowView.swift in Sources */,

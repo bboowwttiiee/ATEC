@@ -1,5 +1,5 @@
 //
-//  PersonCardView.swift
+//  PersonPageView.swift
 //  ATEC
 //
 //  Created by bowtie on 17.05.2022.
@@ -8,82 +8,66 @@
 import SwiftUI
 
 struct PersonPageView: View {
-    //MARK: - PROPERTIES
+    // MARK: - PROPERTIES
     var photo: UIImage
     var name: String
     var age: String
     
-    @AppStorage("isPlay") var isPlay: Bool = false
-    @AppStorage("isDance") var isDance: Bool = false
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    //MARK: - BODY
+    // MARK: - BODY
     var body: some View {
         VStack {
             HStack(spacing: 20) {
                 Image(uiImage: photo)
-                    .renderingMode(.original)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 72, height: 72)
                     .clipShape(Circle())
                     .clipped()
+                    .shadow(color: .black.opacity(0.08), radius: 5, x: 5, y: 5)
                 
                 VStack(alignment: .leading, spacing: 8) {
                     Text(name)
                         .font(.title)
-                    .fontWeight(.bold)
+                        .fontWeight(.bold)
                     
                     Text(age + " years old")
                         .font(.body)
                         .foregroundColor(Color.secondary)
                 }
-                
-                Spacer()
+                .frame(maxWidth: .infinity, alignment: .leading)
             } //: HSTACK
-            .padding()
-            
-            Form {
-                Section("Recent questions") {
-                    Text("Does Jack like to play with other kids?")
-                    Toggle(isOn: $isPlay) {
-                        if isPlay {
-                            Text("Yes".uppercased())
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.green)
-                        } else {
-                            Text("No".uppercased())
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.secondary)
-                        }
-                    }
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .fill(.ultraThinMaterial)
+                .overlay {
+                    Text("Some personal information...")
+                        .font(.title2.italic())
+                        .rotationEffect(Angle(degrees: -45))
+                        .opacity(0.4)
                 }
-                Section {
-                    Text("Does Jack like to dance?")
-                    Toggle(isOn: $isDance) {
-                        if isDance {
-                            Text("Yes".uppercased())
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.green)
-                        } else {
-                            Text("No".uppercased())
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.secondary)
-                        }
-                    }
-                }
-            }
+                .padding(.bottom)
             
-            Spacer()
         } //: VSTACK
-        .edgesIgnoringSafeArea(.bottom)
         .navigationTitle("Person details")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .padding(.horizontal)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    self.presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                }
+            }
+        }
     }
 }
 
-//MARK: - PREVIEW
-struct PersonCardView_Previews: PreviewProvider {
+// MARK: - PREVIEW
+struct PersonPageView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonPageView(photo: UIImage(named: "avatarTemp1")!, name: "Jack", age: "13")
+        PersonPageView(photo: UIImage(named: "lightAvatarTemp1")!, name: "Jack", age: "13")
     }
 }

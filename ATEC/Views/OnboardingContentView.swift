@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct OnboardingContentView: View {
-    //MARK: - PROPERTIES
+    // MARK: - PROPERTIES
     var image: String
     var text: String
     var buttonLabel: String
     var buttonAction: () -> ()
     
-    //MARK: - BODY
+    // MARK: - BODY
     var body: some View {
         VStack(spacing: 30) {
             Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .cornerRadius(9)
+                .cornerRadius(15)
+                .shadow(color: .black.opacity(0.08), radius: 5, x: 5, y: 5)
             
             Text(text)
                 .font(.callout)
@@ -30,15 +31,15 @@ struct OnboardingContentView: View {
             Button(action: buttonAction) {
                 Text(buttonLabel)
                     .frame(maxWidth: .infinity, maxHeight: 60)
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(9)
+                    .background(Color(UIColor.secondarySystemFill))
+                    .cornerRadius(10)
             }
         }
         .padding()
     }
 }
 
-//MARK: - PREVIEW
+// MARK: - PREVIEW
 struct OnboardingContentView_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingView()

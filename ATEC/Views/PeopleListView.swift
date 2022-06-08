@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct PeopleListView: View {
-    //MARK: - PROPERTIES
-    @State private var isShowingSettings: Bool = false
-    @State private var avatar: UIImage = UIImage(named: randomAvatarTemp())!
+    // MARK: - PROPERTIES
+    @AppStorage("isDarkMode") private var isDarkMode = false
+    @State private var isShowingAddPersonPage: Bool = false
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(entity: Person.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: false)]) private var allPersons: FetchedResults<Person>
     
@@ -27,35 +27,41 @@ struct PeopleListView: View {
         }
     }
     
-    //MARK: - BODY
+    // MARK: - BODY
     var body: some View {
         NavigationView {
             ZStack {
-                List {
-                    ForEach(allPersons) { person in
-                        let personAvatar = UIImage(data: person.avatar! as Data)
-                        NavigationLink {
-                            PersonPageView(photo: personAvatar!, name: person.name ?? "", age: "\(calculateAge(fromDate: person.birthdate ?? Date()))")
-                        } label: {
-                            PersonRowView(photo: personAvatar!, name: person.name ?? "", age: "\(calculateAge(fromDate: person.birthdate ?? Date()))y")
-                        }
-                    } //: LOOP
-                    .onDelete(perform: deletePerson)
-                } //: LIST
-                .listStyle(.insetGrouped)
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 15) {
+                        ForEach(allPersons) { person in
+                            let personAvatar = UIImage(data: person.avatar! as Data)
+                            NavigationLink {
+                                PersonPageView(photo: personAvatar!, name: person.name ?? "", age: "\(calculateAge(fromDate: person.birthdate ?? Date()))")
+                            } label: {
+                                PersonRowView(photo: personAvatar!, name: person.name ?? "", age: "\(calculateAge(fromDate: person.birthdate ?? Date()))")
+                                    .padding(.horizontal)
+                            }
+                        } //: LOOP
+                        //                        .onDelete(perform: deletePerson)
+                    } //: VSTACK
+                } //: SCROLL
                 .navigationTitle("People List")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
-                            isShowingSettings = true
+                            isShowingAddPersonPage = true
                         }) {
                             Image(systemName: "plus.circle")
                         } //: BUTTON
-                        .sheet(isPresented: $isShowingSettings) {
+                        .sheet(isPresented: $isShowingAddPersonPage) {
                             AddPersonPageView()
+                                .preferredColorScheme(isDarkMode ? .dark : .light)
+                            
                         }
+                        .tint(isDarkMode ? .white : .black)
                     }
-                }
+                } //: TOOLBAR
+                
                 if allPersons.isEmpty {
                     VStack {
                         Text("Add new person")
@@ -70,12 +76,13 @@ struct PeopleListView: View {
                     .opacity(0.25)
                     .offset(y: -30)
                 }
-            } //: TOOLBAR
+            } //: ZSTACK
         } //: NAVIGATION
+        .preferredColorScheme(isDarkMode ? .dark : .light)
     }
 }
 
-//MARK: - PREVIEW
+// MARK: - PREVIEW
 struct PeopleListView_Previews: PreviewProvider {
     static var previews: some View {
         let persistedContainer = CoreDataManager.shared.persistentContainer

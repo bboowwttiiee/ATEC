@@ -1,5 +1,5 @@
 //
-//  Onboarding.swift
+//  OnboardingView.swift
 //  ATEC
 //
 //  Created by bowtie on 17.05.2022.
@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    //MARK: - PROPERTIES
+    // MARK: - PROPERTIES
     @AppStorage("isOnboarding") var isOnboarding: Bool?
     @State private var selectedTab = 0
     
-    //MARK: - BODY
+    // MARK: - BODY
     var body: some View {
         TabView(selection: $selectedTab) {
             OnboardingContentView(image: "kid", text: "ARI’s Diagnostic Checklist, Form E-2, was developed by Dr. Bernard Rimland to diagnose children with Kanner’s syndrome, which is also known as ‘classical autism.’ Many parents and professionals have also used the E-2 checklist to assist in the diagnosis of autism spectrum disorder (ASD).", buttonLabel: "Next") {
@@ -41,8 +41,8 @@ struct OnboardingView: View {
     }
 }
 
-//MARK: - PREVIEW
-struct Onboarding_Previews: PreviewProvider {
+// MARK: - PREVIEW
+struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             OnboardingView()

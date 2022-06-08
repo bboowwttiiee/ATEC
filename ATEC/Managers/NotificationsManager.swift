@@ -7,6 +7,7 @@
 
 import Foundation
 import UserNotifications
+import UIKit
 
 final class NotificationManager: ObservableObject {
     @Published private(set) var notifications: [UNNotificationRequest] = []
@@ -36,7 +37,16 @@ final class NotificationManager: ObservableObject {
         }
     }
     
-    func createLocalNotifications(title: String, hour: Int, minute: Int, completion: @escaping (Error?) -> ()) {
+    func deleteNotifications() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        DispatchQueue.main.async {
+            self.notifications.removeAll()
+        }
+    }
+    
+    func createLocalNotifications(hour: Int, minute: Int, completion: @escaping (Error?) -> ()) {
         var dateComponents = DateComponents()
         dateComponents.hour = hour
         dateComponents.minute = minute
@@ -44,22 +54,13 @@ final class NotificationManager: ObservableObject {
         let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
         let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = title
+        notificationContent.title = "Daily Question"
+        notificationContent.subtitle = "Answer one simple question. It will only take 10 seconds."
+        notificationContent.badge = 1
         notificationContent.sound = .default
         
         let notificationRequest = UNNotificationRequest(identifier: UUID().uuidString, content: notificationContent, trigger: notificationTrigger)
         
         UNUserNotificationCenter.current().add(notificationRequest, withCompletionHandler: completion)
     }
-}
-
-func calculateAge(fromDate: Date) -> String {
-    let now = Date()
-    let birthday: Date = fromDate
-    let calendar = Calendar.current
-
-    let ageComponents = calendar.dateComponents([.year], from: birthday, to: now)
-    let age = ageComponents.year!
-    
-    return "\(age)"
 }
