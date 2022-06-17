@@ -12,6 +12,9 @@ import UIKit
 final class NotificationManager: ObservableObject {
     @Published private(set) var notifications: [UNNotificationRequest] = []
     @Published private(set) var authorizationStatus: UNAuthorizationStatus?
+    @Published var showTimePicker: Bool = false
+    @Published var isNotificationsOn: Bool = false
+    @Published var isReminderSet: Bool = false
     
     func reloadAuthorizationStatus() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in

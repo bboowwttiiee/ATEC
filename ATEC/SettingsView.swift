@@ -12,9 +12,6 @@ struct SettingsView: View {
     @ObservedObject var notificationManager: NotificationManager
     @AppStorage("isDarkMode") private var isDarkMode = false
     @AppStorage("isOnboarding") var isOnboarding: Bool = false
-    @State private var isNotificationsOn: Bool = false
-    @State private var isReminderSet: Bool = false
-    @State private var showTimePicker: Bool = false
     @State private var notificationDate: Date = Date()
     
     // MARK: - BODY
@@ -49,9 +46,9 @@ struct SettingsView: View {
                             RoundedRectangle(cornerRadius: 15, style: .continuous)
                                 .fill(isDarkMode ?
                                     .linearGradient(colors: [
-                                        .black.opacity(0.8),
-                                        .black.opacity(0.8),
-                                        .black.opacity(0.75),
+                                        .black.opacity(0.7),
+                                        .black.opacity(0.7),
+                                        .black.opacity(0.65),
                                         .black.opacity(0.1),
                                         .black.opacity(0),
                                         .black.opacity(0)
@@ -60,7 +57,7 @@ struct SettingsView: View {
                                             .white.opacity(0.8),
                                             .white.opacity(0.8),
                                             .white.opacity(0.75),
-                                            .white.opacity(0.1),
+                                            .white.opacity(0.3),
                                             .white.opacity(0),
                                             .white.opacity(0)
                                         ], startPoint: .leading, endPoint: .trailing)
@@ -81,26 +78,26 @@ struct SettingsView: View {
                             } //: VSTACK
                             .frame(maxWidth: .infinity, alignment: .leading)
                             
-                            Toggle(isOn: $isNotificationsOn) {}
+                            Toggle(isOn: $notificationManager.isNotificationsOn) {}
                                 .labelsHidden()
-                                .onChange(of: isNotificationsOn) { isTrue in
+                                .onChange(of: notificationManager.isNotificationsOn) { isTrue in
                                     if isTrue {
                                         notificationManager.reloadLocalNotifications()
                                     } else {
-                                        isReminderSet = false
+                                        notificationManager.isReminderSet = false
                                         notificationManager.deleteNotifications()
                                     }
                                 }
                         } //: HSTACK
                         .padding()
                     } //: VSTACK
-                    .frame(height: isNotificationsOn ? 250 : nil, alignment: isNotificationsOn ? .top : .center)
+                    .frame(height: notificationManager.isNotificationsOn ? 250 : nil, alignment: notificationManager.isNotificationsOn ? .top : .center)
                     .background(
                         RoundedRectangle(cornerRadius: 15, style: .continuous)
                             .fill(Color(UIColor.secondarySystemBackground))
                     )
                     .overlay {
-                        if isNotificationsOn {
+                        if notificationManager.isNotificationsOn {
                             VStack {
                                 Divider()
                                     .padding(.bottom)
@@ -111,7 +108,7 @@ struct SettingsView: View {
                                 Label {
                                     Text(notificationDate.formatted(date: .omitted, time: .shortened))
                                 } icon: {
-                                    if !isReminderSet {
+                                    if !notificationManager.isReminderSet {
                                         Image(systemName: "clock")
                                     } else {
                                         HStack {
@@ -140,14 +137,14 @@ struct SettingsView: View {
                                 .frame(maxWidth: .infinity)
                                 .onTapGesture {
                                     withAnimation {
-                                        showTimePicker = true
+                                        notificationManager.showTimePicker = true
                                     }
                                 }
                             } //: VSTACK
                             .padding(.top, 58)
                             .padding(.horizontal)
-                            .opacity(isNotificationsOn ? 1 : 0)
-                            .frame(height: isNotificationsOn ? nil : 0)
+                            .opacity(notificationManager.isNotificationsOn ? 1 : 0)
+                            .frame(height: notificationManager.isNotificationsOn ? nil : 0)
                         }
                     } //: OVERLAY
                     
@@ -173,13 +170,13 @@ struct SettingsView: View {
                     
                     Spacer()
                 } //: VSTACK
-                .animation(.easeInOut.delay(0.1), value: isNotificationsOn)
+                .animation(.easeInOut, value: notificationManager.isNotificationsOn)
             } //: SCROLL
             .navigationTitle("Settings")
             .padding(.horizontal)
         } //: NAVIGATION
         .overlay {
-            if showTimePicker {
+            if notificationManager.showTimePicker {
                 ZStack {
                     Rectangle()
                         .fill(.ultraThinMaterial)
@@ -191,8 +188,8 @@ struct SettingsView: View {
                                 if error == nil {
                                     DispatchQueue.main.async {
                                         withAnimation {
-                                            isReminderSet = true
-                                            showTimePicker = false
+                                            notificationManager.isReminderSet = true
+                                            notificationManager.showTimePicker = false
                                         }
                                     }
                                 }

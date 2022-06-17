@@ -24,15 +24,21 @@ struct NotificationQuestionPageView: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     // MARK: - 1ST TOGGLE
-                    Toggle(isOn: $isJack) {
-                        if isJack {
-                            Text("Yes".uppercased())
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.green)
-                        } else {
-                            Text("No".uppercased())
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.secondary)
+                    HStack {
+                        Text("Some")
+                        
+                        Toggle(isOn: $isJack) {
+                            if isJack {
+                                Text("Yes".uppercased())
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.green)
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                            } else {
+                                Text("No".uppercased())
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.secondary)
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                            }
                         }
                     }
                     .padding()

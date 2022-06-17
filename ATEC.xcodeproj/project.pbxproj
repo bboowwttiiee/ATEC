@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		991BAB5C28563D420057B7E3 /* TabsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991BAB5B28563D420057B7E3 /* TabsModel.swift */; };
+		992223922853BABD00ECCEA8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 992223912853BABD00ECCEA8 /* Lottie */; };
+		992223942853BAE500ECCEA8 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992223932853BAE500ECCEA8 /* SplashScreenView.swift */; };
+		9922239B28551D5B00ECCEA8 /* TabCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9922239A28551D5B00ECCEA8 /* TabCurve.swift */; };
+		9922239F2855297900ECCEA8 /* QuestinarriePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9922239E2855297900ECCEA8 /* QuestinarriePageView.swift */; };
 		9924AEDC2845885B00B8D9FD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9924AEDB2845885B00B8D9FD /* SettingsView.swift */; };
 		9924AEDE28458AA500B8D9FD /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9924AEDD28458AA500B8D9FD /* CustomTabBarView.swift */; };
 		9975CD4E2833D2F200A9B25A /* ATECApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9975CD4D2833D2F200A9B25A /* ATECApp.swift */; };
@@ -26,9 +31,19 @@
 		998EEC1A28367BB2006598B2 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998EEC1928367BB2006598B2 /* Components.swift */; };
 		998EEC1C2836D2CC006598B2 /* NotificationQuestionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998EEC1B2836D2CC006598B2 /* NotificationQuestionPageView.swift */; };
 		99C7E3DE283EF2A100E2D19F /* OnboardingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C7E3DD283EF2A100E2D19F /* OnboardingContentView.swift */; };
+		99DA9853285A788700FBB819 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA9852285A788700FBB819 /* MainView.swift */; };
+		99DA9857285A895400FBB819 /* loadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 99DA9856285A895400FBB819 /* loadingAnimation.json */; };
+		99DA9859285A89E200FBB819 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA9858285A89E200FBB819 /* LottieView.swift */; };
+		99F515B128527EF900E00571 /* EditPersonalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F515B028527EF900E00571 /* EditPersonalInfoView.swift */; };
+		99F515B32852812A00E00571 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F515B22852812A00E00571 /* ChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		991BAB5B28563D420057B7E3 /* TabsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsModel.swift; sourceTree = "<group>"; };
+		992223932853BAE500ECCEA8 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		992223992853F77A00ECCEA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9922239A28551D5B00ECCEA8 /* TabCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCurve.swift; sourceTree = "<group>"; };
+		9922239E2855297900ECCEA8 /* QuestinarriePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestinarriePageView.swift; sourceTree = "<group>"; };
 		9924AEDB2845885B00B8D9FD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		9924AEDD28458AA500B8D9FD /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		9975CD4A2833D2F200A9B25A /* ATEC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATEC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +64,11 @@
 		998EEC1928367BB2006598B2 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		998EEC1B2836D2CC006598B2 /* NotificationQuestionPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationQuestionPageView.swift; sourceTree = "<group>"; };
 		99C7E3DD283EF2A100E2D19F /* OnboardingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContentView.swift; sourceTree = "<group>"; };
+		99DA9852285A788700FBB819 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		99DA9856285A895400FBB819 /* loadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingAnimation.json; sourceTree = "<group>"; };
+		99DA9858285A89E200FBB819 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		99F515B028527EF900E00571 /* EditPersonalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonalInfoView.swift; sourceTree = "<group>"; };
+		99F515B22852812A00E00571 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +76,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				992223922853BABD00ECCEA8 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9922239C285528B800ECCEA8 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				998EEC11283677F3006598B2 /* PeopleListView.swift */,
+				9975CD5F2833D38D00A9B25A /* AddPersonPageView.swift */,
+				9975CD652833EE3900A9B25A /* PersonRowView.swift */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		9922239D285528EE00ECCEA8 /* PersonalInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				9975CD672833EE9A00A9B25A /* PersonPageView.swift */,
+				99F515B028527EF900E00571 /* EditPersonalInfoView.swift */,
+				99F515B22852812A00E00571 /* ChartView.swift */,
+			);
+			path = PersonalInfoView;
+			sourceTree = "<group>";
+		};
 		9975CD412833D2F200A9B25A = {
 			isa = PBXGroup;
 			children = (
@@ -81,9 +122,12 @@
 		9975CD4C2833D2F200A9B25A /* ATEC */ = {
 			isa = PBXGroup;
 			children = (
+				992223992853F77A00ECCEA8 /* Info.plist */,
 				9975CD4D2833D2F200A9B25A /* ATECApp.swift */,
+				992223932853BAE500ECCEA8 /* SplashScreenView.swift */,
 				9975CD5D2833D35A00A9B25A /* OnboardingView.swift */,
 				9975CD4F2833D2F200A9B25A /* ContentView.swift */,
+				9922239E2855297900ECCEA8 /* QuestinarriePageView.swift */,
 				9924AEDB2845885B00B8D9FD /* SettingsView.swift */,
 				9975CD5B2833D31C00A9B25A /* Views */,
 				9975CD5C2833D33400A9B25A /* Models */,
@@ -93,6 +137,7 @@
 				9975CD512833D2F300A9B25A /* Assets.xcassets */,
 				9975CD532833D2F300A9B25A /* Preview Content */,
 				998EEC1328367933006598B2 /* PersonModel.xcdatamodeld */,
+				99DA9856285A895400FBB819 /* loadingAnimation.json */,
 			);
 			path = ATEC;
 			sourceTree = "<group>";
@@ -108,10 +153,9 @@
 		9975CD5B2833D31C00A9B25A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				998EEC11283677F3006598B2 /* PeopleListView.swift */,
-				9975CD5F2833D38D00A9B25A /* AddPersonPageView.swift */,
-				9975CD652833EE3900A9B25A /* PersonRowView.swift */,
-				9975CD672833EE9A00A9B25A /* PersonPageView.swift */,
+				99DA9852285A788700FBB819 /* MainView.swift */,
+				9922239C285528B800ECCEA8 /* ListView */,
+				9922239D285528EE00ECCEA8 /* PersonalInfoView */,
 				998EEC1B2836D2CC006598B2 /* NotificationQuestionPageView.swift */,
 				99C7E3DD283EF2A100E2D19F /* OnboardingContentView.swift */,
 				9924AEDD28458AA500B8D9FD /* CustomTabBarView.swift */,
@@ -123,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				9975CD612833D3B600A9B25A /* QuestionsModel.swift */,
+				991BAB5B28563D420057B7E3 /* TabsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -148,6 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				998EEC1928367BB2006598B2 /* Components.swift */,
+				9922239A28551D5B00ECCEA8 /* TabCurve.swift */,
+				99DA9858285A89E200FBB819 /* LottieView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -168,6 +215,9 @@
 			dependencies = (
 			);
 			name = ATEC;
+			packageProductDependencies = (
+				992223912853BABD00ECCEA8 /* Lottie */,
+			);
 			productName = ATEC;
 			productReference = 9975CD4A2833D2F200A9B25A /* ATEC.app */;
 			productType = "com.apple.product-type.application";
@@ -196,6 +246,9 @@
 				Base,
 			);
 			mainGroup = 9975CD412833D2F200A9B25A;
+			packageReferences = (
+				992223902853BABD00ECCEA8 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 9975CD4B2833D2F200A9B25A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -210,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99DA9857285A895400FBB819 /* loadingAnimation.json in Resources */,
 				9975CD552833D2F300A9B25A /* Preview Assets.xcassets in Resources */,
 				9975CD522833D2F300A9B25A /* Assets.xcassets in Resources */,
 			);
@@ -223,8 +277,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				998EEC1C2836D2CC006598B2 /* NotificationQuestionPageView.swift in Sources */,
+				99DA9853285A788700FBB819 /* MainView.swift in Sources */,
+				99DA9859285A89E200FBB819 /* LottieView.swift in Sources */,
+				9922239B28551D5B00ECCEA8 /* TabCurve.swift in Sources */,
 				998EEC1A28367BB2006598B2 /* Components.swift in Sources */,
 				998EEC1528367933006598B2 /* PersonModel.xcdatamodeld in Sources */,
+				992223942853BAE500ECCEA8 /* SplashScreenView.swift in Sources */,
+				9922239F2855297900ECCEA8 /* QuestinarriePageView.swift in Sources */,
 				9975CD5E2833D35A00A9B25A /* OnboardingView.swift in Sources */,
 				9924AEDE28458AA500B8D9FD /* CustomTabBarView.swift in Sources */,
 				998EEC12283677F4006598B2 /* PeopleListView.swift in Sources */,
@@ -232,10 +291,13 @@
 				9975CD682833EE9A00A9B25A /* PersonPageView.swift in Sources */,
 				9975CD602833D38D00A9B25A /* AddPersonPageView.swift in Sources */,
 				9975CD6A2834073500A9B25A /* NotificationsManager.swift in Sources */,
+				99F515B32852812A00E00571 /* ChartView.swift in Sources */,
 				9924AEDC2845885B00B8D9FD /* SettingsView.swift in Sources */,
 				9975CD6E2834151900A9B25A /* ImagePicker.swift in Sources */,
 				9975CD502833D2F200A9B25A /* ContentView.swift in Sources */,
 				9975CD662833EE3900A9B25A /* PersonRowView.swift in Sources */,
+				991BAB5C28563D420057B7E3 /* TabsModel.swift in Sources */,
+				99F515B128527EF900E00571 /* EditPersonalInfoView.swift in Sources */,
 				998EEC18283679A3006598B2 /* DataManager.swift in Sources */,
 				9975CD4E2833D2F200A9B25A /* ATECApp.swift in Sources */,
 				99C7E3DE283EF2A100E2D19F /* OnboardingContentView.swift in Sources */,
@@ -370,12 +432,13 @@
 				DEVELOPMENT_TEAM = X68879DLV5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ATEC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,6 +446,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bowtie.ATEC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -400,12 +466,13 @@
 				DEVELOPMENT_TEAM = X68879DLV5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ATEC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -413,6 +480,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bowtie.ATEC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -441,6 +511,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		992223902853BABD00ECCEA8 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		992223912853BABD00ECCEA8 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 992223902853BABD00ECCEA8 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		998EEC1328367933006598B2 /* PersonModel.xcdatamodeld */ = {

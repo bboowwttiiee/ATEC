@@ -7,45 +7,48 @@
 
 import SwiftUI
 
-enum Tab: String, CaseIterable {
-    case peopleList = "person.crop.rectangle.stack"
-    case settings = "gearshape"
-}
-
 struct CustomTabBarView: View {
     // MARK: - PROPERTIES
     @Binding var selectedTab: Tab
-    private var filledImage: String {
-        selectedTab.rawValue + ".fill"
-    }
+    @State var tabPoints: [CGFloat] = []
     
     // MARK: - BODY
     var body: some View {
         HStack(spacing: 0) {
             ForEach(Tab.allCases, id: \.rawValue) { tab in
-                Button {
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        selectedTab = tab
-                    }
-                } label: {
-                    Image(systemName: selectedTab == tab ? filledImage : tab.rawValue)
-                        .renderingMode(.template)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 25, height: 25)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(selectedTab == tab ? .blue : .gray)
-                        .scaleEffect(selectedTab == tab ? 1.4 : 1.2)
-                        .padding()
-                }
-            } //: LOOP
-        } //: HSTACK
-        .frame(height: 30)
-        .padding(.bottom, 10)
-        .padding([.horizontal, .top])
-        .background {
-            Color(UIColor.secondarySystemFill)
-                .ignoresSafeArea()
+                TabBarButton(image: tab, selectedTab: $selectedTab, tabPoints: $tabPoints)
+            }
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 30)
+                .fill(.thinMaterial)
+                .clipShape(TabCurve(tabPoint: getCurvePoint() - 15))
+        )
+        .overlay {
+            Group {
+                Circle()
+                    .fill(.blue.opacity(0.8))
+                    .frame(width: 10, height: 10)
+                    .offset(x: getCurvePoint() - 20)
+            }
+            .frame(maxWidth: .infinity, maxHeight: 80, alignment: .bottomLeading)
+        }
+        .padding(.horizontal)
+    }
+    
+    func getCurvePoint() -> CGFloat {
+        if tabPoints.isEmpty {
+            return 10
+        } else {
+            switch selectedTab {
+            case .peopleList:
+                return tabPoints.min() ?? 0
+            case .questinarrie:
+                return tabPoints[1]
+            case .settings:
+                return tabPoints.max() ?? 0
+            }
         }
     }
 }
@@ -54,5 +57,38 @@ struct CustomTabBarView: View {
 struct CustomTabBarView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct TabBarButton: View {
+    var image: Tab
+    @Binding var selectedTab: Tab
+    @Binding var tabPoints: [CGFloat]
+    
+    var body: some View {
+        GeometryReader { proxy -> AnyView in
+            let midX = proxy.frame(in: .global).midX
+            
+            DispatchQueue.main.async {
+                if tabPoints.count <= 2 {
+                    tabPoints.append(midX)
+                }
+            }
+            
+            return AnyView(
+                Button {
+                    withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.5, blendDuration: 0.5)) {
+                        selectedTab = image
+                    }
+                } label: {
+                    Image(systemName: image.rawValue)
+                        .font(.system(size: 25, weight: .semibold))
+                        .foregroundColor(selectedTab == image ? .blue.opacity(0.8) : .gray.opacity(0.8))
+                        .offset(y: selectedTab == image ? -10 : 0)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            )
+        }
+        .frame(height: 50)
     }
 }
