@@ -19,6 +19,7 @@ struct AddPersonPageView: View {
     @State private var offset: Float = 0
     
     @State private var isShowingImagePicker: Bool = false
+    @State private var saveAlert = false
     
     struct GenderToggleStyle: ToggleStyle {
         func makeBody(configuration: Configuration) -> some View {
@@ -86,7 +87,7 @@ struct AddPersonPageView: View {
                     // MARK: - AVATAR SCROLL
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
-                            Group {
+                            VStack {
                                 Circle()
                                     .fill(Color(UIColor.secondarySystemFill))
                                     .frame(width: 60, height: 60)
@@ -163,7 +164,7 @@ struct AddPersonPageView: View {
                             "Birth date",
                             selection: $birthdate,
                             in: ...Date(),
-                            displayedComponents: [.date]
+                            displayedComponents: .date
                         )
                         .accentColor(.black)
                         
@@ -199,18 +200,21 @@ struct AddPersonPageView: View {
                     
                     // MARK: - SAVE BUTTON
                     Button {
-                        if name != "" {
-                            savePerson()
-                            presentationMode.wrappedValue.dismiss()
-                        }
+                        saveAlert = true
                     } label: {
-                        Text("Save")
-                            .fontWeight(.bold)
+                        PrimaryButton(text: "Save")
                     } //: BUTTON
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 60)
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(14)
+                    .alert("Save person?", isPresented: $saveAlert) {
+                        Button("Save", role: .destructive) {
+                            if name != "" {
+                                savePerson()
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        }
+                        Button("Edit", role: .cancel) {}
+                    } message: {
+                        Text("It will be impossible to change user data later. Make sure that you have entered a name, date of birth and gender correctly.")
+                    }
                     
                     Spacer()
                 } //: VSTACK
@@ -224,7 +228,7 @@ struct AddPersonPageView: View {
                             Image(systemName: "xmark")
                         }
                     }
-                }
+                } //: TOOLBAR
             } //: SCROLL
         } //: NAVIGATION
         .sheet(isPresented: $isShowingImagePicker) {

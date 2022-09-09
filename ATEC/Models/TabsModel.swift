@@ -9,6 +9,5 @@ import SwiftUI
 
 enum Tab: String, CaseIterable {
     case peopleList = "person.crop.rectangle.stack"
-    case questinarrie = "list.bullet.rectangle.portrait"
     case settings = "gearshape"
 }

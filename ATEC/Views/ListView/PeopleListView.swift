@@ -11,14 +11,15 @@ struct PeopleListView: View {
     // MARK: - PROPERTIES
     @State private var isShowingAddPersonPage: Bool = false
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(entity: Person.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: false)]) private var allPersons: FetchedResults<Person>
+    @FetchRequest(fetchRequest: Person.ownFetchRequest)
+    var allPersons: FetchedResults<Person>
     
     // MARK: - BODY
     var body: some View {
         NavigationView {
             ZStack {
                 ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: 15) {
+                    VStack(spacing: 16) {
                         ForEach(allPersons) { person in
                             let personAvatar = UIImage(data: person.avatar! as Data)
                             NavigationLink {
@@ -29,6 +30,7 @@ struct PeopleListView: View {
                             }
                         } //: LOOP
                     } //: VSTACK
+                    .padding(.bottom, getSafeArea().bottom + 60)
                 } //: SCROLL
                 .navigationTitle("People List")
                 .toolbar {

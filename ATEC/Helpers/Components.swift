@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 func calculateAge(fromDate: Date) -> Int {
     let now = Date()
@@ -30,5 +31,14 @@ extension View {
         }
         
         return safeArea
+    }
+}
+
+extension Person {
+    static var ownFetchRequest: NSFetchRequest<Person> {
+        let request: NSFetchRequest<Person> = Person.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "dateCreated", ascending: false)]
+        
+        return request
     }
 }

@@ -18,9 +18,9 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 15) {
+                VStack(spacing: 16) {
                     
-                    // MARK: - DARKMODE
+                    // MARK: - DARK MODE
                     HStack {
                         VStack(alignment: .leading, spacing: 6) {
                             Text("Dark Mode")
@@ -182,6 +182,9 @@ struct SettingsView: View {
                         .fill(.ultraThinMaterial)
                         .ignoresSafeArea()
                         .onTapGesture {
+                            let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                            impactMed.impactOccurred()
+                            
                             let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: notificationDate)
                             guard let hour = dateComponents.hour, let minute = dateComponents.minute else { return }
                             notificationManager.createLocalNotifications(hour: hour, minute: minute) { error in

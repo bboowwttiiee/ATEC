@@ -18,7 +18,7 @@ struct CustomTabBarView: View {
             ForEach(Tab.allCases, id: \.rawValue) { tab in
                 TabBarButton(image: tab, selectedTab: $selectedTab, tabPoints: $tabPoints)
             }
-        }
+        } //: HSTACK
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 30)
@@ -26,7 +26,7 @@ struct CustomTabBarView: View {
                 .clipShape(TabCurve(tabPoint: getCurvePoint() - 15))
         )
         .overlay {
-            Group {
+            VStack {
                 Circle()
                     .fill(.blue.opacity(0.8))
                     .frame(width: 10, height: 10)
@@ -44,8 +44,6 @@ struct CustomTabBarView: View {
             switch selectedTab {
             case .peopleList:
                 return tabPoints.min() ?? 0
-            case .questinarrie:
-                return tabPoints[1]
             case .settings:
                 return tabPoints.max() ?? 0
             }

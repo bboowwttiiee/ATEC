@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     // MARK: - PROPERTIES
-    @AppStorage("isDarkMode") private var isDarkMode = false
     @AppStorage("isOnboarding") var isOnboarding: Bool = true
     let persistentContainer = CoreDataManager.shared.persistentContainer
     @State var endAnimation: Bool = false
@@ -17,7 +16,7 @@ struct ContentView: View {
     // MARK: - BODY
     var body: some View {
         ZStack {
-            Group {
+            VStack {
                 if isOnboarding {
                     OnboardingView()
                 } else {
@@ -28,8 +27,7 @@ struct ContentView: View {
             .offset(y: endAnimation ? 0 : getRect().height)
             
             SplashScreenView(endAnimation: $endAnimation)
-        }
-        .preferredColorScheme(isDarkMode ? .dark : .light)
+        } //: ZSTACK
     }
 }
 

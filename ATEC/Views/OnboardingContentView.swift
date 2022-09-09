@@ -22,6 +22,7 @@ struct OnboardingContentView: View {
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(15)
                 .shadow(color: .black.opacity(0.08), radius: 5, x: 5, y: 5)
+                .shadow(color: .black.opacity(0.08), radius: 5, x: -5, y: -5)
             
             Text(text)
                 .font(.callout)
@@ -34,7 +35,7 @@ struct OnboardingContentView: View {
                     .background(Color(UIColor.secondarySystemFill))
                     .cornerRadius(10)
             }
-        }
+        } //: VSTACK
         .padding()
     }
 }

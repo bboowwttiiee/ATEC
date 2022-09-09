@@ -59,8 +59,18 @@ final class NotificationManager: ObservableObject {
         let notificationContent = UNMutableNotificationContent()
         notificationContent.title = "Daily Question"
         notificationContent.subtitle = "Answer one simple question. It will only take 10 seconds."
+        notificationContent.body = "Some question text is going here..."
         notificationContent.badge = 1
         notificationContent.sound = .default
+        
+        let yesAnswer = UNNotificationAction(identifier: "yes", title: "Yes", options: .foreground)
+        let noAnswer = UNNotificationAction(identifier: "no", title: "No", options: .foreground)
+        let cancel = UNNotificationAction(identifier: "cancel", title: "Cancel", options: .destructive)
+        let categories = UNNotificationCategory(identifier: "actions", actions: [yesAnswer, noAnswer, cancel], intentIdentifiers: [])
+        
+        UNUserNotificationCenter.current().setNotificationCategories([categories])
+        
+        notificationContent.categoryIdentifier = "actions"
         
         let notificationRequest = UNNotificationRequest(identifier: UUID().uuidString, content: notificationContent, trigger: notificationTrigger)
         

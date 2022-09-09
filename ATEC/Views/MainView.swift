@@ -21,14 +21,12 @@ struct MainView: View {
             TabView(selection: $selectedTab) {
                 PeopleListView()
                     .tag(Tab.peopleList)
-                QuestinarriePageView()
-                    .tag(Tab.questinarrie)
                 SettingsView(notificationManager: notificationManager)
                     .tag(Tab.settings)
             } //: TAB
             
             CustomTabBarView(selectedTab: $selectedTab)
-        } //: VSTACK
+        } //: ZSTACK
         .onAppear(perform: notificationManager.reloadAuthorizationStatus)
         .onChange(of: notificationManager.authorizationStatus) { authorizationStatus in
             switch authorizationStatus {
@@ -39,7 +37,7 @@ struct MainView: View {
             default:
                 break
             }
-        }
+        } //: ONCHANGE
     }
 }
 

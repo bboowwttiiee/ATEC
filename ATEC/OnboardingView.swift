@@ -44,10 +44,6 @@ struct OnboardingView: View {
 // MARK: - PREVIEW
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            OnboardingView()
-            OnboardingView()
-                .preferredColorScheme(.dark)
-        }
+        OnboardingView()
     }
 }

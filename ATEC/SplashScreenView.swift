@@ -29,12 +29,12 @@ struct SplashScreenView: View {
                 Text("Bowtie")
                     .font(.title2)
                     .fontWeight(.semibold)
-            }
+            } //: VSTACK
             .frame(maxHeight: .infinity, alignment: .bottom)
             .foregroundColor(Color.white.opacity(0.8))
             .padding(.bottom, getSafeArea().bottom == 0 ? 15 : getSafeArea().bottom)
             .opacity(endAnimation ? 0 : 1)
-        }
+        } //: ZSTACK
         .offset(y: endAnimation ? (-getRect().height * 1.5) : 0)
         .ignoresSafeArea()
         .onAppear {
@@ -45,7 +45,7 @@ struct SplashScreenView: View {
             withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 1.05, blendDuration: 1.05).delay(1.6)) {
                 endAnimation.toggle()
             }
-        }
+        } //: ONAPPEAR
     }
 }
 

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PersonPageView: View {
     // MARK: - PROPERTIES
+    @StateObject var questionnaireManager = QuestionnaireManager()
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var isShowingEditPersonPage: Bool = false
@@ -20,20 +21,10 @@ struct PersonPageView: View {
     var age: String
     var person: Person
     
-    private func deletePerson(_ person: Person) {
-        viewContext.delete(person)
-        
-        do {
-            try viewContext.save()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
     // MARK: - BODY
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 20) {
                 HStack(spacing: 20) {
                     Image(uiImage: photo)
                         .resizable()
@@ -58,13 +49,19 @@ struct PersonPageView: View {
                 
                 VStack {
                     ChartView()
-                        .shadow(color: .black.opacity(0.3), radius: 5, x: 5, y: 5)
                         .padding()
                 }
                 .background(
                     RoundedRectangle(cornerRadius: 15, style: .continuous)
                         .fill(.ultraThinMaterial)
                 )
+                
+                NavigationLink {
+                    QuestionnaireView(person: person)
+                        .environmentObject(questionnaireManager)
+                } label: {
+                    PrimaryButton(text: "Start Questionnaire")
+                }
                 
                 RoundedRectangle(cornerRadius: 15, style: .continuous)
                     .fill(.ultraThinMaterial)
@@ -79,6 +76,7 @@ struct PersonPageView: View {
             } //: VSTACK
             .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal)
+            .padding(.bottom, getSafeArea().bottom + 60)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -87,7 +85,7 @@ struct PersonPageView: View {
                         Image(systemName: "trash")
                     }
                     .tint(.red)
-                    .alert("Delete person", isPresented: $deleteAlert) {
+                    .alert("Delete person?", isPresented: $deleteAlert) {
                         Button("OK", role: .destructive) {
                             withAnimation {
                                 deletePerson(person)
@@ -106,11 +104,21 @@ struct PersonPageView: View {
                     } label: {
                         Image(systemName: "slider.horizontal.3")
                     }
-//                    .sheet(isPresented: $isShowingEditPersonPage) {
-//                        EditPersonalInfoView(avatar: UIImage(named: "avatarTemp1")!, name: "Jack", birthdate: Date(), isMale: true)
-//                    }
+                    //                    .sheet(isPresented: $isShowingEditPersonPage) {
+                    //                        EditPersonalInfoView(name: $name, bd: person.birthdate, gender: person.gender)
+                    //                    }
                 }
-            }
+            } //: TOOLBAR
+        } //: SCROLL
+    }
+    
+    private func deletePerson(_ person: Person) {
+        viewContext.delete(person)
+        
+        do {
+            try viewContext.save()
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }
